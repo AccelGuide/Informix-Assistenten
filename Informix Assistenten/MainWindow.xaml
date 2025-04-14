@@ -1,0 +1,249 @@
+﻿<Window x:Class="Informix_Assistenten.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Informix_Assistenten"
+        mc:Ignorable="d"
+        Title="Informix 4GL Assistent"
+        Height="600" Width="900"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Background="Transparent"
+        FontFamily="JetBrains Mono"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Style TargetType="TabItem">
+            <Setter Property="Background" Value="#eaf4ff"/>
+            <Setter Property="Foreground" Value="#3178c6"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="JetBrains Mono"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="2,0,2,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Border Name="Border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="#80b6f2"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Padding="5,2">
+                            <ContentPresenter x:Name="ContentSite"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"
+                                              ContentSource="Header"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#3178c6"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#cce5ff"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border CornerRadius="15"
+            BorderBrush="#80b6f2"
+            BorderThickness="2"
+            Background="White"
+            SnapsToDevicePixels="True"
+            ClipToBounds="True">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Fensterleiste mit Menü und Buttons -->
+            <Grid Grid.Row="0" Background="#f5f9ff" Margin="25,0,25,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Menüleiste -->
+                <Menu Grid.Column="0" Background="#f5f9ff" Height="18" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="10,0,670,0">
+                    <MenuItem Header="Datei" FontFamily="JetBrains Mono">
+                        <MenuItem Header="Neu" Click="MenuNeu_Click"/>
+                        <MenuItem Header="Bearbeiten" Click="MenuBearbeiten_Click" FontFamily="JetBrains Mono"/>
+                        <MenuItem Header="Öffnen" Click="MenuOeffnen_Click" FontFamily="JetBrains Mono"/>
+                        <Separator/>
+                        <MenuItem Header="Einstellungen" Click="MenuEinstellungen_Click" FontFamily="JetBrains Mono"/>
+                        <Separator/>
+                        <MenuItem Header="Beenden" Click="MenuExit_Click" FontFamily="JetBrains Mono"/>
+                    </MenuItem>
+                    <MenuItem Header="Hilfe" FontFamily="JetBrains Mono">
+                        <MenuItem Header="Informix Handbuch öffnen" Click="MenuOpenManual_Click" FontFamily="JetBrains Mono"/>
+                        <MenuItem Header="Anleitungen öffnen" Click="MenuAnleitungHinzufuegen_Click" FontFamily="JetBrains Mono"/>
+                        <MenuItem Header="Anleitung hinzufügen" Click="MenuAnleitungHinzufuegen_Click" FontFamily="JetBrains Mono"/>
+                        <MenuItem Header="Anleitung entfernen" Click="MenuAnleitungEntfernen_Click" FontFamily="JetBrains Mono"/>
+                    </MenuItem>
+                </Menu>
+
+                <!-- Titel mittig -->
+                <TextBlock Grid.Column="1" Text="Informix 4GL Assistent"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           FontWeight="Bold"
+                           FontSize="14"
+                           Foreground="#3178c6"/>
+
+                <!-- Minimieren-Button -->
+                <Button Grid.Column="2" Content="—"
+                        Width="30" Height="30"
+                        FontWeight="Bold"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Foreground="#3178c6"
+                        ToolTip="Minimieren"
+                        Click="Minimize_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Foreground" Value="#3178c6"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#d0e2f2"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <!-- Schließen-Button -->
+                <Button Grid.Column="3" Content="✕"
+                        Width="30" Height="30"
+                        FontWeight="Bold"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Foreground="#c62828"
+                        ToolTip="Schließen"
+                        Click="Close_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Foreground" Value="#c62828"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#ffcdd2"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+
+            <!-- Hauptinhalt mit rechter Statusleiste -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="250"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- TabControl links -->
+                <TabControl Grid.Column="0" Margin="10,10,296,10">
+                    <TabItem Header="📄 4GL-Programme" FontWeight="Normal" FontSize="12">
+                        <Grid Width="309" Height="467">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="309"/>
+                                <ColumnDefinition Width="0*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Margin="10,0,0,0">
+                                <TextBlock Text="4GL Programm Liste:" FontWeight="Normal" Foreground="#3178c6" Margin="0,0,0,10"/>
+                                <ListBox x:Name="lstScripts" Background="#f0f8ff" BorderBrush="#80b6f2"/>
+                                <Button Content="Programm ausführen" Click="BtnExecuteProgramm_Click" Margin="0,10,0,0"
+                                        Background="#3178c6" Foreground="White" Padding="5" BorderThickness="0"/>
+                            </StackPanel>
+
+                            <TextBox x:Name="txtOutput" AcceptsReturn="True"
+                                     VerticalScrollBarVisibility="Auto" IsReadOnly="True" TextWrapping="Wrap"
+                                     Background="#f0f8ff" BorderBrush="#80b6f2" BorderThickness="1"
+                                     Margin="0,160,0,0" Padding="5"/>
+                        </Grid>
+                    </TabItem>
+
+                    <TabItem Header="📝 Routineaufgaben" FontSize="12" FontWeight="Normal">
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="250"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Aufgabenliste:" FontWeight="Normal" Foreground="#3178c6" Margin="0,0,0,10"/>
+                                <ListBox x:Name="lstRoutineTasks" Background="#f0f8ff" BorderBrush="#80b6f2"/>
+                                <Button Content="Aufgabe hinzufügen" Click="BtnAddTask_Click" Margin="0,10,0,0"
+                                        Background="#3178c6" Foreground="White" Padding="5" BorderThickness="0"/>
+                                <Button Content="Aufgabe ausführen" Click="BtnExecuteTask_Click" Margin="0,5,0,0"
+                                        Background="#80b6f2" Foreground="White" Padding="5" BorderThickness="0"/>
+                            </StackPanel>
+
+                            <TextBox Grid.Column="1" x:Name="txtRoutineTaskOutput" AcceptsReturn="True"
+                                     VerticalScrollBarVisibility="Auto" IsReadOnly="True" TextWrapping="Wrap"
+                                     Background="#f0f8ff" BorderBrush="#80b6f2" BorderThickness="1"
+                                     Margin="10,0,0,0" Padding="5"/>
+                        </Grid>
+                    </TabItem>
+
+                    <TabItem Header="🛠 Maintenance" FontWeight="Normal" FontSize="12">
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="250"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Maintenance Liste:" FontWeight="Normal" Foreground="#3178c6" Margin="0,0,0,10"/>
+                                <ListBox x:Name="lstMaintenanceTasks" Background="#f0f8ff" BorderBrush="#80b6f2">
+                                    <ListBoxItem Content="Kontrolliert Stoppen + Starten"/>
+                                    <ListBoxItem Content="Serverstatus prüfen"/>
+                                    <ListBoxItem Content="Ressourcen überwachen"/>
+                                    <ListBoxItem Content="Performancetest"/>
+                                    <ListBoxItem Content="Integritätstest"/>
+                                    <ListBoxItem Content="Versionsabfragetest"/>
+                                    <ListBoxItem Content="Log-Level 1 einstellen"/>
+                                    <ListBoxItem Content="Log-Level 3 einstellen"/>
+                                    <ListBoxItem Content="100 Zeilen des Informix-Logs"/>
+                                    <ListBoxItem Content="RAM Test"/>
+                                    <ListBoxItem Content="Backup mit onbar"/>
+                                    <ListBoxItem Content="Recovery"/>
+                                    <ListBoxItem Content="ERROR Log-Analyse"/>
+                                    <ListBoxItem Content="Patch-Installation"/>
+                                </ListBox>
+                                <Button Content="Programm ausführen" Click="BtnExecuteMaintenance_Click" Margin="0,10,0,0"
+                                        Background="#3178c6" Foreground="White" Padding="5" BorderThickness="0"/>
+                            </StackPanel>
+
+                            <TextBox Grid.Column="1" x:Name="txtMaintenanceOutput" AcceptsReturn="True"
+                                     VerticalScrollBarVisibility="Auto" IsReadOnly="True" TextWrapping="Wrap"
+                                     Background="#f0f8ff" BorderBrush="#80b6f2" BorderThickness="1"
+                                     Margin="10,0,0,0" Padding="5"/>
+                        </Grid>
+                    </TabItem>
+
+
+                </TabControl>
+
+                <!-- Statusbereich rechts -->
+                <Border Background="#f5f9ff" BorderBrush="#80b6f2" BorderThickness="1" Padding="10" Grid.ColumnSpan="2" Margin="355,10,10,10">
+                    <TextBlock Text="Bereit." VerticalAlignment="Top" Foreground="#3178c6" FontWeight="Bold"/>
+                </Border>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

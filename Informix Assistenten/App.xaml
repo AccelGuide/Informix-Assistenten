@@ -1,0 +1,15 @@
+﻿<Application x:Class="Informix_Assistenten.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Informix_Assistenten"
+             StartupUri="LoginWindow.xaml">
+    <Application.Resources>
+        <FontFamily x:Key="JetBrainsMono">pack://application:,,,/Fonts/#JetBrains Mono</FontFamily>
+
+        <DropShadowEffect x:Key="DropShadow"
+                      Color="#888"
+                      BlurRadius="12"
+                      ShadowDepth="4"
+                      Direction="270"/>
+    </Application.Resources>
+</Application>
