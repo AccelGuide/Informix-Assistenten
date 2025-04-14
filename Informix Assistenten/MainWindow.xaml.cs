@@ -75,7 +75,7 @@ namespace Informix_Assistenten
 
         private void MenuNeu_Click(object sender, RoutedEventArgs e)
         {
-            OpenEditorWithTempFile("neu.txt");
+            OpenEditorWithTempFile("neu.4gl");
         }
 
         private void MenuBearbeiten_Click(object sender, RoutedEventArgs e)

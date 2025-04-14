@@ -210,14 +210,12 @@
                             <StackPanel Grid.Column="0">
                                 <TextBlock Text="Maintenance Liste:" FontWeight="Normal" Foreground="#3178c6" Margin="0,0,0,10"/>
                                 <ListBox x:Name="lstMaintenanceTasks" Background="#f0f8ff" BorderBrush="#80b6f2">
-                                    <ListBoxItem Content="Kontrolliert Stoppen + Starten"/>
+                                    <ListBoxItem Content="Kontrollierter Neustart"/>
                                     <ListBoxItem Content="Serverstatus prüfen"/>
                                     <ListBoxItem Content="Ressourcen überwachen"/>
-                                    <ListBoxItem Content="Performancetest"/>
+                                    <ListBoxItem Content="Performance Monitoring"/>
                                     <ListBoxItem Content="Integritätstest"/>
                                     <ListBoxItem Content="Versionsabfragetest"/>
-                                    <ListBoxItem Content="Log-Level 1 einstellen"/>
-                                    <ListBoxItem Content="Log-Level 3 einstellen"/>
                                     <ListBoxItem Content="100 Zeilen des Informix-Logs"/>
                                     <ListBoxItem Content="RAM Test"/>
                                     <ListBoxItem Content="Backup mit onbar"/>
