@@ -242,5 +242,17 @@ namespace Informix_Assistenten
             settingsWindow.Owner = this;
             settingsWindow.ShowDialog();
         }
+        private void BtnNewLogin_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Login-Fenster öffnen (noch nicht implementiert).");
+            // TODO: "LoginDialog" anzeigen und Status aktualisieren
+        }
+
+        private void BtnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateStatusLeiste("dummy", "dummy", "dummy");
+            Title = "Informix 4GL Assistent [Testmodus]";
+            MessageBox.Show("Abgemeldet.");
+        }
     }
 }

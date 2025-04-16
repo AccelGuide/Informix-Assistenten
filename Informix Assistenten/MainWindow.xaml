@@ -255,6 +255,35 @@
                 <StatusBarItem>
                     <TextBlock x:Name="txtStatusUser" Text="Benutzer: dummy" FontFamily="JetBrains Mono" Width="150" TextAlignment="Center"/>
                 </StatusBarItem>
+
+                <!-- Dehnbare Fläche um Buttons nach rechts zu schieben -->
+                <StatusBarItem Width="225">
+                    <Grid Width="Auto"/>
+                </StatusBarItem>
+
+                <!-- Buttons rechtsbündig -->
+                <StatusBarItem>
+                    <Button Content="New Login"
+                Click="BtnNewLogin_Click"
+                Background="#3178c6"
+                Foreground="White"
+                FontWeight="Bold"
+                Padding="6,2"
+                Margin="5,0"
+                BorderThickness="0"
+                Cursor="Hand"/>
+                </StatusBarItem>
+                <StatusBarItem>
+                    <Button Content="Logout"
+                Click="BtnLogout_Click"
+                Background="#c62828"
+                Foreground="White"
+                FontWeight="Bold"
+                Padding="6,2"
+                Margin="5,0,10,0"
+                BorderThickness="0"
+                Cursor="Hand"/>
+                </StatusBarItem>
             </StatusBar>
         </Grid>
     </Border>
