@@ -22,9 +22,15 @@ namespace Informix_Assistenten
             LoadEditorPath();
 
             if (_testMode)
+            {
                 Title += " [Testmodus]";
+                UpdateStatusLeiste("dummy", "dummy", "dummy");
+            }
             else
+            {
                 Title += " [Verbunden]";
+                UpdateStatusLeiste("ifxserver", "kunden_db", "admin"); // <- echte Werte hier einsetzen
+            }
         }
 
         private void LoadEditorPath()
@@ -38,6 +44,12 @@ namespace Informix_Assistenten
                     _editorPath = editorSetting.Replace("EditorPath=", "").Trim();
                 }
             }
+        }
+                private void UpdateStatusLeiste(string server, string datenbank, string benutzer)
+        {
+            txtStatusServer.Text = $"Server: {server}";
+            txtStatusDatabase.Text = $"Datenbank: {datenbank}";
+            txtStatusUser.Text = $"Benutzer: {benutzer}";
         }
 
         private void MenuExit_Click(object sender, RoutedEventArgs e)
