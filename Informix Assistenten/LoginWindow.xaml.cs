@@ -31,14 +31,7 @@ namespace Informix_Assistenten
         {
             try
             {
-                // Implementiere hier echte Informix-Verbindung, z.B. mit IBM Informix .NET Provider:
-                // using IBM.Data.Informix;
-                // string connString = $"Server={server};Database={database};UID={user};PWD={password};";
-                // using (var conn = new IfxConnection(connString))
-                // {
-                //     conn.Open();
-                //     return conn.State == ConnectionState.Open;
-                // }
+
 
                 // Temporäre Dummy-Logik für Demo-Zwecke:
                 return !string.IsNullOrWhiteSpace(server) &&
