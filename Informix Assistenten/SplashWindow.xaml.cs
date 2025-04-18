@@ -29,6 +29,7 @@ namespace Informix_Assistenten
                 await Task.Delay(700); // Simulierter Ladeschritt
             }
 
+            MaintenanceManager.LoadTasks();
             // Splash schließen und Hauptfenster starten
             MainWindow mainWindow = new MainWindow(testMode: true); // true für Testmodus
             mainWindow.Show();

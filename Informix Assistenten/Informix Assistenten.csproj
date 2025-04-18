@@ -118,15 +118,33 @@
     <Resource Include="Fonts\JetBrainsMono-LightItalic.ttf" />
     <Resource Include="Fonts\JetBrainsMono-Regular.ttf" />
     <EmbeddedResource Include="Manual\Manual.pdf" />
-    <EmbeddedResource Include="Maintenance_Prog\Kontrollierter Neustart.sh" />
-    <EmbeddedResource Include="Maintenance_Prog\Serverstatus prüfen.sh" />
-    <EmbeddedResource Include="Maintenance_Prog\100 Zeilen des Informix-Logs.sh" />
-    <EmbeddedResource Include="Maintenance_Prog\Automatisierte Statistiksammlung.sh" />
-    <EmbeddedResource Include="Maintenance_Prog\Backup mit onbar.sh" />
-    <EmbeddedResource Include="Maintenance_Prog\Recovery.sh" />
-    <EmbeddedResource Include="Maintenance_Prog\Ressourcen überwachen.sh" />
-    <EmbeddedResource Include="Maintenance_Prog\Täglicher Systemreport.sh" />
-    <EmbeddedResource Include="Maintenance_Prog\Versionsabfragetest.sh" />
+    <Content Include="Maintenance_Prog\Kontrollierter Neustart.sh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Maintenance_Prog\Serverstatus prüfen.sh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Maintenance_Prog\100 Zeilen des Informix-Logs.sh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Maintenance_Prog\Automatisierte Statistiksammlung.sh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Maintenance_Prog\Backup mit onbar.sh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Maintenance_Prog\Recovery.sh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Maintenance_Prog\Ressourcen überwachen.sh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Maintenance_Prog\Täglicher Systemreport.sh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Maintenance_Prog\Versionsabfragetest.sh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -138,6 +156,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Logo\IA_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Execute_Prog\" />
+    <Folder Include="RoutineTasks_Prog\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

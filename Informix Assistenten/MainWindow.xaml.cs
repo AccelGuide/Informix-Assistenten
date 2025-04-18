@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using Microsoft.Win32;
 
 namespace Informix_Assistenten
@@ -18,6 +19,15 @@ namespace Informix_Assistenten
         public MainWindow(bool testMode)
         {
             InitializeComponent();
+            lstMaintenanceTasks.Items.Clear();
+
+            //Test:
+            // MessageBox.Show($"Geladene Tasks: {MaintenanceManager.MaintenanceTasks.Count}");
+
+            foreach (string name in MaintenanceManager.MaintenanceTasks)
+            {
+                lstMaintenanceTasks.Items.Add(new ListBoxItem { Content = name });
+            }
             _testMode = testMode;
             LoadEditorPath();
 
@@ -254,6 +264,72 @@ namespace Informix_Assistenten
             UpdateStatusLeiste("dummy", "dummy", "dummy");
             Title = "Informix 4GL Assistent [Testmodus]";
             MessageBox.Show("Abgemeldet.");
+        }
+        private void lstMaintenanceTasks_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (lstMaintenanceTasks.SelectedItem is ListBoxItem selectedItem)
+            {
+                string fileName = selectedItem.Content.ToString();
+                string folder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Maintenance_Prog");
+
+                // .4gl zuerst probieren, dann .sh
+                string[] extensions = new[] { ".4gl", ".sh" };
+                foreach (string ext in extensions)
+                {
+                    string fullPath = Path.Combine(folder, fileName + ext);
+                    if (File.Exists(fullPath))
+                    {
+                        OpenEditor(fullPath);
+                        return;
+                    }
+                }
+
+                MessageBox.Show("Datei nicht gefunden: " + fileName);
+            }
+        }
+        private void lstExecuteProgramm_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (lstExecuteProgramm.SelectedItem is ListBoxItem selectedItem)
+            {
+                string fileName = selectedItem.Content.ToString();
+                string folder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Execute_Prog");
+
+                // .4gl zuerst probieren, dann .sh
+                string[] extensions = new[] { ".4gl", ".sh" };
+                foreach (string ext in extensions)
+                {
+                    string fullPath = Path.Combine(folder, fileName + ext);
+                    if (File.Exists(fullPath))
+                    {
+                        OpenEditor(fullPath);
+                        return;
+                    }
+                }
+
+                MessageBox.Show("Datei nicht gefunden: " + fileName);
+            }
+        }
+        private void lstRoutineTasks_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (lstRoutineTasks.SelectedItem is ListBoxItem selectedItem)
+            {
+                string fileName = selectedItem.Content.ToString();
+                string folder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "RoutineTasks_Prog");
+
+                // .4gl zuerst probieren, dann .sh
+                string[] extensions = new[] { ".4gl", ".sh" };
+                foreach (string ext in extensions)
+                {
+                    string fullPath = Path.Combine(folder, fileName + ext);
+                    if (File.Exists(fullPath))
+                    {
+                        OpenEditor(fullPath);
+                        return;
+                    }
+                }
+
+                MessageBox.Show("Datei nicht gefunden: " + fileName);
+            }
         }
     }
 }

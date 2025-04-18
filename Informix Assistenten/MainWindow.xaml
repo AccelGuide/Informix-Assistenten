@@ -165,7 +165,7 @@
 
                             <StackPanel Grid.Column="0" Margin="0,0,0,20">
                                 <TextBlock Text="4GL Programm Liste:" FontWeight="Normal" Foreground="#3178c6" Margin="0,0,0,10"/>
-                                <ListBox x:Name="lstScripts" Background="#f0f8ff" BorderBrush="#80b6f2"/>
+                                <ListBox x:Name="lstExecuteProgramm" Background="#f0f8ff" BorderBrush="#80b6f2" MouseDoubleClick="lstExecuteProgramm_MouseDoubleClick" d:ItemsSource="{d:SampleData ItemCount=5}"/>
                                 <Button Content="Programm ausführen" Click="BtnExecuteProgramm_Click" Margin="0,10,0,0"
                                         Background="#3178c6" Foreground="White" Padding="5" BorderThickness="0"/>
                             </StackPanel>
@@ -186,7 +186,7 @@
 
                             <StackPanel Grid.Column="0">
                                 <TextBlock Text="Aufgabenliste:" FontWeight="Normal" Foreground="#3178c6" Margin="0,0,0,10"/>
-                                <ListBox x:Name="lstRoutineTasks" Background="#f0f8ff" BorderBrush="#80b6f2"/>
+                                <ListBox x:Name="lstRoutineTasks" Background="#f0f8ff" BorderBrush="#80b6f2" MouseDoubleClick="lstRoutineTasks_MouseDoubleClick" d:ItemsSource="{d:SampleData ItemCount=5}"/>
                                 <Button Content="Aufgabe hinzufügen" Click="BtnAddTask_Click" Margin="0,10,0,0"
                                         Background="#3178c6" Foreground="White" Padding="5" BorderThickness="0"/>
                                 <Button Content="Aufgabe ausführen" Click="BtnExecuteTask_Click" Margin="0,5,0,0"
@@ -209,20 +209,7 @@
 
                             <StackPanel Grid.Column="0">
                                 <TextBlock Text="Maintenance Liste:" FontWeight="Normal" Foreground="#3178c6" Margin="0,0,0,10"/>
-                                <ListBox x:Name="lstMaintenanceTasks" Background="#f0f8ff" BorderBrush="#80b6f2">
-                                    <ListBoxItem Content="Kontrollierter Neustart"/>
-                                    <ListBoxItem Content="Serverstatus prüfen"/>
-                                    <ListBoxItem Content="Ressourcen überwachen"/>
-                                    <ListBoxItem Content="Performance Monitoring"/>
-                                    <ListBoxItem Content="Integritätstest"/>
-                                    <ListBoxItem Content="Versionsabfragetest"/>
-                                    <ListBoxItem Content="100 Zeilen des Informix-Logs"/>
-                                    <ListBoxItem Content="RAM Test"/>
-                                    <ListBoxItem Content="Backup mit onbar"/>
-                                    <ListBoxItem Content="Recovery"/>
-                                    <ListBoxItem Content="ERROR Log-Analyse"/>
-                                    <ListBoxItem Content="Patch-Installation"/>
-                                </ListBox>
+                                <ListBox x:Name="lstMaintenanceTasks" Background="#f0f8ff" BorderBrush="#80b6f2" MouseDoubleClick="lstMaintenanceTasks_MouseDoubleClick" d:ItemsSource="{d:SampleData ItemCount=5}"/>
                                 <Button Content="Programm ausführen" Click="BtnExecuteMaintenance_Click" Margin="0,10,0,0"
                                         Background="#3178c6" Foreground="White" Padding="5" BorderThickness="0"/>
                             </StackPanel>
@@ -237,9 +224,9 @@
 
                 </TabControl>
 
-                <!-- Statusbereich rechts -->
+                <!-- Statusbereich unten -->
                 <Border Background="#f5f9ff" BorderBrush="#80b6f2" BorderThickness="1" Padding="10" Margin="0,10,10,10" Grid.Column="1">
-                    <TextBlock Text="Bereit." VerticalAlignment="Top" Foreground="#3178c6" FontWeight="Bold"/>
+                    <TextBlock Text="Bereit." VerticalAlignment="Top" Foreground="#3178c6"/>
                 </Border>
 
             </Grid>
