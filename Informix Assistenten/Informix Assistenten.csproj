@@ -119,6 +119,14 @@
     <Resource Include="Fonts\JetBrainsMono-Regular.ttf" />
     <EmbeddedResource Include="Manual\Manual.pdf" />
     <EmbeddedResource Include="Maintenance_Prog\Kontrollierter Neustart.sh" />
+    <EmbeddedResource Include="Maintenance_Prog\Serverstatus prüfen.sh" />
+    <EmbeddedResource Include="Maintenance_Prog\100 Zeilen des Informix-Logs.sh" />
+    <EmbeddedResource Include="Maintenance_Prog\Automatisierte Statistiksammlung.sh" />
+    <EmbeddedResource Include="Maintenance_Prog\Backup mit onbar.sh" />
+    <EmbeddedResource Include="Maintenance_Prog\Recovery.sh" />
+    <EmbeddedResource Include="Maintenance_Prog\Ressourcen überwachen.sh" />
+    <EmbeddedResource Include="Maintenance_Prog\Täglicher Systemreport.sh" />
+    <EmbeddedResource Include="Maintenance_Prog\Versionsabfragetest.sh" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
