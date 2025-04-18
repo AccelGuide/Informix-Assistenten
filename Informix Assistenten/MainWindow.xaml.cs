@@ -171,7 +171,7 @@ namespace Informix_Assistenten
             if (_testMode)
                 txtOutput.Text = "Testmodus aktiv: Simulierte Skriptausgabe.";
             else
-                txtOutput.Text = "Standard-Skript ausgeführt. Ergebnis würde hier angezeigt werden.";
+                txtOutput.Text = "Standard-Skript ausgeführt."; // todo "Implementiren von funktionen"
         }
 
         private void BtnAddTask_Click(object sender, RoutedEventArgs e)
@@ -244,8 +244,9 @@ namespace Informix_Assistenten
         }
         private void BtnNewLogin_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Login-Fenster öffnen (noch nicht implementiert).");
-            // TODO: "LoginDialog" anzeigen und Status aktualisieren
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Owner = this;
+            loginWindow.ShowDialog();
         }
 
         private void BtnLogout_Click(object sender, RoutedEventArgs e)

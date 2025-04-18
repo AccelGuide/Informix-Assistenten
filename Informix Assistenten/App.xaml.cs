@@ -13,5 +13,11 @@ namespace Informix_Assistenten
     /// </summary>
     public partial class App : Application
     {
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            SplashWindow splash = new SplashWindow();
+            splash.Show();
+        }
+
     }
 }

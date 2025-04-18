@@ -1,0 +1,30 @@
+﻿<Window x:Class="Informix_Assistenten.SplashWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        Height="310" Width="390"
+        ShowInTaskbar="False"
+        Topmost="True">
+
+    <Border CornerRadius="15" Background="White" BorderBrush="#3178c6" BorderThickness="2" Padding="10">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Height="245">
+            <Image Source="Logo/IA_Logo.png" Width="184" Margin="0,10" Height="181"/>
+            <TextBlock x:Name="txtStatus"
+                       Text="Lade Informix Assistent..."
+                       FontSize="14"
+                       FontWeight="Bold"
+                       Foreground="#3178c6"
+                       TextAlignment="Center"/>
+            <ProgressBar x:Name="progressBar"
+                 Height="20" Width="320"
+                 Minimum="0" Maximum="100"
+                 Foreground="#3178c6"
+                 Background="#eaf4ff"
+                 BorderBrush="#80b6f2"
+                 BorderThickness="1"/>
+        </StackPanel>
+    </Border>
+</Window>

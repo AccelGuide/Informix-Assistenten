@@ -157,13 +157,13 @@
                 <!-- TabControl links -->
                 <TabControl Grid.Column="0" Margin="10,10,10,10">
                     <TabItem Header="📄 4GL-Programme" FontWeight="Normal" FontSize="12">
-                        <Grid Width="309" Height="467">
+                        <Grid Width="309" Height="459">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="309"/>
                                 <ColumnDefinition Width="0*"/>
                             </Grid.ColumnDefinitions>
 
-                            <StackPanel Grid.Column="0" Margin="10,0,0,0">
+                            <StackPanel Grid.Column="0" Margin="0,0,0,20">
                                 <TextBlock Text="4GL Programm Liste:" FontWeight="Normal" Foreground="#3178c6" Margin="0,0,0,10"/>
                                 <ListBox x:Name="lstScripts" Background="#f0f8ff" BorderBrush="#80b6f2"/>
                                 <Button Content="Programm ausführen" Click="BtnExecuteProgramm_Click" Margin="0,10,0,0"
@@ -173,7 +173,7 @@
                             <TextBox x:Name="txtOutput" AcceptsReturn="True"
                                      VerticalScrollBarVisibility="Auto" IsReadOnly="True" TextWrapping="Wrap"
                                      Background="#f0f8ff" BorderBrush="#80b6f2" BorderThickness="1"
-                                     Margin="0,160,0,0" Padding="5"/>
+                                     Margin="0,160,0,10" Padding="5"/>
                         </Grid>
                     </TabItem>
 
