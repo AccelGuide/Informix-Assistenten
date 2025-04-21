@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Informix_Assistenten.SettingsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av"
+        xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" 
         Title="Einstellungen"
         Height="451" Width="420"
         WindowStartupLocation="CenterScreen"
@@ -104,18 +104,26 @@
                 <Button Content="Pfad wählen" Click="BtnChoosePath_Click" Width="120" HorizontalAlignment="Left" Margin="0,0,0,15"/>
 
                 <TextBlock TextWrapping="Wrap" Text="Informix Ports (für Scan):" Foreground="#3178c6"/>
-                <ListBox x:Name="lstPorts" Height="47" Background="#f5f9ff" BorderBrush="#80b6f2" BorderThickness="1" av:ItemsSource="{av:SampleData ItemCount=5}"/>
-                <StackPanel Height="73">
-                    <TextBox x:Name="txtNewPort" Width="100" Margin="0,5" Text="txtNewPort"/>
-                    <Button Content="Hinzufügen" Width="90" Click="BtnAddPort_Click">
-                        <Button.Foreground>
-                            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionTextColorKey}}"/>
-                        </Button.Foreground>
-                        <Button.BorderBrush>
-                            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightColorKey}}"/>
-                        </Button.BorderBrush>
-                    </Button>
-                    <Button Content="Entfernen" Width="90" Click="BtnRemovePort_Click"/>
+
+                <ListBox x:Name="lstPorts"
+         Height="47"
+         Background="#f5f9ff"
+         BorderBrush="#80b6f2"
+         BorderThickness="1"
+         Margin="0,0,0,5" av:ItemsSource="{av:SampleData ItemCount=5}"/>
+
+                <!-- Eingabe + Buttons nebeneinander -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBox x:Name="txtNewPort" Width="100" Margin="0,0,10,0"/>
+
+                    <Button Content="Hinzufügen"
+            Width="90"
+            Margin="0,0,10,0"
+            Click="BtnAddPort_Click"/>
+
+                    <Button Content="Entfernen"
+            Width="90"
+            Click="BtnRemovePort_Click"/>
                 </StackPanel>
 
 
