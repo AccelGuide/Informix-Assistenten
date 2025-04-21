@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -29,6 +30,7 @@ namespace Informix_Assistenten
                 {
                     if (line.StartsWith("Testmode=true")) chkTestmode.IsChecked = true;
                     if (line.StartsWith("LogAutoSave=true")) chkLogAutoSave.IsChecked = true;
+
                     if (line.StartsWith("EditorPath="))
                     {
                         string path = line.Replace("EditorPath=", "");
@@ -43,18 +45,30 @@ namespace Informix_Assistenten
                         else
                             cmbEditor.SelectedIndex = 3;
                     }
+
+                    if (line.StartsWith("Ports="))
+                    {
+                        var ports = line.Replace("Ports=", "").Split(',');
+                        foreach (var port in ports)
+                        {
+                            if (!string.IsNullOrWhiteSpace(port))
+                                lstPorts.Items.Add(port.Trim());
+                        }
+                    }
                 }
             }
         }
 
         private void SaveSettings()
         {
-            string[] lines = new string[]
+            var lines = new List<string>
             {
                 $"Testmode={(chkTestmode.IsChecked == true).ToString().ToLower()}",
                 $"LogAutoSave={(chkLogAutoSave.IsChecked == true).ToString().ToLower()}",
-                $"EditorPath={txtEditorPath.Text}"
+                $"EditorPath={txtEditorPath.Text}",
+                $"Ports={string.Join(",", lstPorts.Items.Cast<string>())}"
             };
+
             File.WriteAllLines(configPath, lines);
         }
 
@@ -121,7 +135,7 @@ namespace Informix_Assistenten
                         }
                         else
                         {
-                            txtEditorPath.Text = ""; // Falls nicht gefunden
+                            txtEditorPath.Text = "";
                             MessageBox.Show("Visual Studio Code konnte nicht im Standardverzeichnis gefunden werden.", "Hinweis", MessageBoxButton.OK, MessageBoxImage.Warning);
                         }
 
@@ -139,11 +153,31 @@ namespace Informix_Assistenten
         private void BtnChoosePath_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "4GL-Dateien (*.4gl;*.per)|*.4gl;*.per|Alle Dateien (*.*)|*.*";
+            openFileDialog.Filter = "Programme (*.exe)|*.exe|Alle Dateien (*.*)|*.*";
             if (openFileDialog.ShowDialog() == true)
             {
                 txtEditorPath.Text = openFileDialog.FileName;
             }
+        }
+
+        private void BtnAddPort_Click(object sender, RoutedEventArgs e)
+        {
+            if (int.TryParse(txtNewPort.Text, out int port) && port > 0 && port < 65536)
+            {
+                if (!lstPorts.Items.Contains(port.ToString()))
+                    lstPorts.Items.Add(port.ToString());
+                txtNewPort.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Ungültiger Port.");
+            }
+        }
+
+        private void BtnRemovePort_Click(object sender, RoutedEventArgs e)
+        {
+            if (lstPorts.SelectedItem != null)
+                lstPorts.Items.Remove(lstPorts.SelectedItem);
         }
     }
 }

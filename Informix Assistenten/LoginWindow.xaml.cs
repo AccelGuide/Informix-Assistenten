@@ -7,11 +7,17 @@ namespace Informix_Assistenten
         public LoginWindow()
         {
             InitializeComponent();
+
+            cmbServer.ItemsSource = AppState.AvailableServers;
+            if (cmbServer.Items.Count > 0)
+                cmbServer.SelectedIndex = 0;
         }
 
         private void BtnConnect_Click(object sender, RoutedEventArgs e)
         {
-            if (ConnectToInformix(txtServer.Text, txtDatabase.Text, txtUser.Text, txtPassword.Password))
+            string server = cmbServer.Text;
+
+            if (ConnectToInformix(server, cmbServer.Text, txtUser.Text, txtPassword.Password))
             {
                 OpenMainWindow(false);
             }
@@ -31,9 +37,6 @@ namespace Informix_Assistenten
         {
             try
             {
-
-
-                // Temporäre Dummy-Logik für Demo-Zwecke:
                 return !string.IsNullOrWhiteSpace(server) &&
                        !string.IsNullOrWhiteSpace(database) &&
                        !string.IsNullOrWhiteSpace(user) &&
@@ -59,11 +62,13 @@ namespace Informix_Assistenten
             string logPath = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "error.log");
             System.IO.File.AppendAllText(logPath, $"{System.DateTime.Now}: {message}\n");
         }
+
         protected override void OnMouseLeftButtonDown(System.Windows.Input.MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
             this.DragMove();
         }
+
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -73,6 +78,5 @@ namespace Informix_Assistenten
         {
             this.WindowState = WindowState.Minimized;
         }
-
     }
 }
